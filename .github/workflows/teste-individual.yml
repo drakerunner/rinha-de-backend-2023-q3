@@ -33,7 +33,7 @@ jobs:
           key: gatling-charts-highcharts-bundle-${{ env.GATLING_VERSION }}-bundle.zip
 
       - name: Baixar Gatling
-        working-directory: teste/gatling/deps
+        working-directory: teste/gatling
         if: steps.gatling-cache.outputs.cache-hit != 'true'
         run: |
           ARQUIVO="gatling-charts-highcharts-bundle-${{ env.GATLING_VERSION }}-bundle.zip"
@@ -41,7 +41,7 @@ jobs:
 
           echo "::debug::Downloading Gatling ${{ env.GATLING_VERSION }} from $URL"
           echo "::debug::Destination $(PWD)/$ARQUIVO"
-          # wget $URL
+          wget -P deps $URL
 
       - name: Setup Gatling
         id: gatling
