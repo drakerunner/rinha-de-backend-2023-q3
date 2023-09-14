@@ -74,6 +74,7 @@ jobs:
 
           cd ../..
 
+          mkdir -p ./user-files/resources
           ./geradores/${{ env.GERADOR_CARGA }}/gerar-pessoas > ./user-files/resources/pessoas-payloads.tsv
           ./geradores/${{ env.GERADOR_CARGA }}/gerar-termos-busca > ./user-files/resources/termos-busca.tsv
 
