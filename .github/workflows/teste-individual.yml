@@ -39,9 +39,9 @@ jobs:
           ARQUIVO="gatling-charts-highcharts-bundle-${{ env.GATLING_VERSION }}-bundle.zip"
           URL="https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/${{ env.GATLING_VERSION }}/${ARQUIVO}"
 
-          echo "::debug::Downloading Gatling ${{ env.GATLING_VERSION }} from ${URL}"
-          echo "::debug::Destination ${PWD}/${ARQUIVO}"
-          wget ${URL}
+          echo "::debug::Downloading Gatling ${{ env.GATLING_VERSION }} from $URL"
+          echo "::debug::Destination $(PWD)/$ARQUIVO"
+          wget $URL
 
       - name: Setup Gatling
         id: gatling
@@ -49,10 +49,10 @@ jobs:
         run: |
           ARQUIVO="gatling-charts-highcharts-bundle-${{ env.GATLING_VERSION }}-bundle.zip"
 
-          echo "::debug::Extracting ${ARQUIVO}"
-          unzip -q ${ARQUIVO}
+          echo "::debug::Extracting $ARQUIVO"
+          unzip -q $ARQUIVO
 
-          echo "gatling_bin_dir=${PWD}/gatling-charts-highcharts-bundle-${{ env.GATLING_VERSION }}/bin" >> "${GITHUB_ENV}"
+          echo "gatling_bin_dir=$(PWD)/gatling-charts-highcharts-bundle-${{ env.GATLING_VERSION }}/bin" >> "${GITHUB_ENV}"
 
       - uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
         id: carga-cache
@@ -81,7 +81,7 @@ jobs:
         id: carga
         working-directory: teste/gatling
         run: |
-          echo "resources_dir=${PWD}/user-files/resources" >> "${GITHUB_ENV}"
+          echo "resources_dir=$(PWD)/user-files/resources" >> "${GITHUB_ENV}"
 
       - name: Subindo a aplicação
         working-directory: participantes/${{ inputs.participante }}
