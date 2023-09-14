@@ -41,7 +41,7 @@ jobs:
 
           echo "::debug::Downloading Gatling ${{ env.GATLING_VERSION }} from $URL"
           echo "::debug::Destination $(PWD)/$ARQUIVO"
-          wget $URL
+          # wget $URL
 
       - name: Setup Gatling
         id: gatling
